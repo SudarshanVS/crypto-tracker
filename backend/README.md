@@ -6,7 +6,7 @@ The backend is written in Python using FastAPI.
 ### Installation
 Create a virtual environment using venv
 ```
-python -m venv venv
+python -m venv .venv
 ```
 
 Activate virtual environment
