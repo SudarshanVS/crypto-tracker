@@ -1,4 +1,4 @@
-# Frontend for Binance Tracker
+# Frontend for Crypto Tracker
 The frontend is built using React.
 
 ## LOCAL DEVELOPMENT
