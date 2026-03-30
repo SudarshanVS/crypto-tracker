@@ -69,3 +69,7 @@ async def price(crypto_symbols: str):
         data = list(d.values())
 
     return {"status": "success", "data": data}
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("main:app", host="0.0.0.0", port=8000)
