@@ -1,8 +1,4 @@
 # used for deployment to vercel
-[build-system]
-requires = ["setuptools >= 82.0.1"]
-build-backend = "setuptools.build_meta"
-
 [project]
 name = "crypto-tracker"
 version =  "0.0.1"
