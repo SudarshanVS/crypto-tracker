@@ -4,4 +4,4 @@ name = "crypto-tracker"
 version =  "0.0.1"
 
 [project.scripts]
-app = "backend.config.app:app"
+app = "config.app:app"
