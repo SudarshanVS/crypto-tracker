@@ -1,0 +1,3 @@
+# used for deployment to vercel
+[project.scripts]
+app = "backend.config.app:app"
