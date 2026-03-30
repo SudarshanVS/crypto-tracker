@@ -1,8 +1,7 @@
 # used for deployment to vercel
 [project]
 name = "crypto-tracker"
-version = "0.0.1"
-requires-python = ">=3.9.13"
+version = "0.1.0"
 dependencies = [
     "annotated-doc==0.0.4",
     "annotated-types==0.7.0",
@@ -58,5 +57,3 @@ dependencies = [
     "wrapt==2.1.2",
     "zope.interface==8.0.1"
 ]
-[project.scripts]
-app = "config.app:app"
