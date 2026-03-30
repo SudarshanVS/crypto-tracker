@@ -43,7 +43,7 @@ async def track(websocket: WebSocket):
 
 
 @app.get("/api/crypto/price")
-async def price(crypto_symbols: str):
+async def price(crypto_symbols: str = None):
     data = []
 
     try:
