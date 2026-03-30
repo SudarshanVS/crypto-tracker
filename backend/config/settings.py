@@ -5,7 +5,7 @@ REDIS_MAX_CONNECTIONS = 100
 
 STREAMS = os.getenv("STREAMS", "ethusdt@ticker/solusdt@ticker/btcusdt@ticker")
 
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOST", "http://localhost:3000,http://127.0.0.1:3000").split(",")
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "http://localhost:3000,http://127.0.0.1:3000").split(",")
 
 logging.basicConfig(
     level=logging.INFO,
