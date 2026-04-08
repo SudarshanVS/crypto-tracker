@@ -7,6 +7,8 @@ STREAMS = os.getenv("STREAMS", "ethusdt@ticker/solusdt@ticker/btcusdt@ticker")
 
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "http://localhost:3000,http://127.0.0.1:3000").split(",")
 
+PUBLIC_FRONTEND_URL = os.getenv("PUBLIC_FRONTEND_URL", "http://localhost:3000")
+
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"

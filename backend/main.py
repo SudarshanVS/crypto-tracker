@@ -1,6 +1,8 @@
 import logging
-from fastapi import WebSocket, Request, WebSocketDisconnect
+from fastapi import WebSocket, WebSocketDisconnect
+from starlette.responses import RedirectResponse
 
+from config.settings import PUBLIC_FRONTEND_URL
 from db.local_inmemory_store import store
 from config.app import app
 
@@ -70,6 +72,7 @@ async def price(crypto_symbols: str = None):
 
     return {"status": "success", "data": data}
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run("main:app", host="0.0.0.0", port=5001)
+@app.get("/{full_path:path}")
+async def catch_all(full_path: str):
+    destination = f"{PUBLIC_FRONTEND_URL}/{full_path}"
+    return RedirectResponse(url=destination)
