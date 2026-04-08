@@ -1,5 +1,5 @@
 import {Box, Card, CardContent, Container, Skeleton} from "@mui/material";
-import {useLocation} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 import WebSocketClient from "data/websocket";
 
@@ -8,11 +8,48 @@ const Dashboard = () => {
     const location = useLocation();
     // Access the state object
     const {state} = location
-    const cryptoSymbols = state.cryptoSymbols
+    const cryptoSymbols = state?.cryptoSymbols
+
+    const navigate = useNavigate();
 
     const [showUI, setShowUI] = useState(false)
     const [data, setData] = useState({})
     const [ws, setWs] = useState(null)
+
+
+    useEffect(() => {
+        let newWebSocket = null;
+        const openConnection = async () => {
+            try {
+                newWebSocket = new WebSocketClient(`${process.env.REACT_APP_WS_URI}/crypto/track`)
+                setWs(newWebSocket)
+            } catch (e) {
+                console.error(e) //todo: show error popup
+            }
+
+        }
+
+        if (!state || !cryptoSymbols) {
+            navigate("/")
+        } else {
+            openConnection()
+        }
+
+        return () => {
+            console.log("Closing WebSocket")
+            const closeConnection = async () => {
+                if (newWebSocket)
+                    try {
+                        await newWebSocket.socket.close()
+                    } catch (e) {
+                        console.error(e)
+                    }
+
+            }
+            closeConnection()
+        }
+    }, [state, cryptoSymbols, navigate])
+
 
     if (ws !== null) {
         ws.socket.onopen = () => {
@@ -33,34 +70,6 @@ const Dashboard = () => {
         }
 
     }
-
-    useEffect(() => {
-        let newWebSocket = null;
-        const openConnection = async () => {
-            try {
-                newWebSocket = new WebSocketClient(`${process.env.REACT_APP_WS_URI}/crypto/track`)
-                setWs(newWebSocket)
-            } catch (e) {
-                console.error(e) //todo: show error popup
-            }
-
-        }
-        openConnection()
-
-        return () => {
-            console.log("Closing WebSocket")
-            const closeConnection = async () => {
-                if (newWebSocket)
-                    try {
-                        await newWebSocket.socket.close()
-                    } catch (e) {
-                        console.error(e)
-                    }
-
-            }
-            closeConnection()
-        }
-    }, [])
 
     const DataRow = ({label, value}) => (
         <>
@@ -93,7 +102,7 @@ const Dashboard = () => {
 
     })
 
-    const SkeletonComponents = cryptoSymbols.map((symbol) => {
+    const SkeletonComponents = cryptoSymbols && cryptoSymbols.map((symbol) => {
         return <Skeleton variant="rectangular" key={symbol}/>
     })
 
