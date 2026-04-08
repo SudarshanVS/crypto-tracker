@@ -2,6 +2,10 @@
 A web application that tracks cryptocurrency prices using the publicly available Binance Websocket Stream API.
 The application is built using React and FastAPI.
 
+
+![Crypto Tracker System Design](./crypto-tracker.jpg)
+`Figure 1: System Design`
+
 # Backend for Crypto Tracker
 The backend is written in Python using FastAPI.
 
