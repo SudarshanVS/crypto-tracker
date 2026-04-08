@@ -1,8 +1,6 @@
 import logging
 from fastapi import WebSocket, WebSocketDisconnect
-from starlette.responses import RedirectResponse
 
-from config.settings import PUBLIC_FRONTEND_URL
 from db.local_inmemory_store import store
 from config.app import app
 
@@ -71,8 +69,3 @@ async def price(crypto_symbols: str = None):
         data = list(d.values())
 
     return {"status": "success", "data": data}
-
-# @app.get("/{full_path:path}")
-# async def catch_all(full_path: str):
-#     destination = f"{PUBLIC_FRONTEND_URL}/{full_path}"
-#     return RedirectResponse(url=destination)
