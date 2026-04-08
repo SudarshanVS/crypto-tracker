@@ -72,7 +72,7 @@ async def price(crypto_symbols: str = None):
 
     return {"status": "success", "data": data}
 
-@app.get("/{full_path:path}")
-async def catch_all(full_path: str):
-    destination = f"{PUBLIC_FRONTEND_URL}/{full_path}"
-    return RedirectResponse(url=destination)
+# @app.get("/{full_path:path}")
+# async def catch_all(full_path: str):
+#     destination = f"{PUBLIC_FRONTEND_URL}/{full_path}"
+#     return RedirectResponse(url=destination)
