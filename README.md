@@ -6,7 +6,8 @@ The application is built using React and FastAPI.
 ![Crypto Tracker System Design](./crypto-tracker.jpg)
 `Figure 1: System Design`
 
-![Video Walk Through](https://www.loom.com/share/cc1b86f9ec1a415f94a50c5e9bdd764e)
+[![Video Walk Through]()](https://www.loom.com/share/cc1b86f9ec1a415f94a50c5e9bdd764e)
+
 # Backend for Crypto Tracker
 The backend is written in Python using FastAPI.
 
